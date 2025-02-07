@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: 0px auto;
+  
+}
+
+.container_landing{
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  margin: 0px auto;
+}
+
+@font-face {
+  font-family: 'IranYekanLight';
+  src: url('./assets/fonts/IRANYekanLight.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'IranYekanLight', sans-serif;
+}
