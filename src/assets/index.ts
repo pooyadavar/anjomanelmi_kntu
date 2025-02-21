@@ -4,13 +4,14 @@ const assets={
     img:{
         packDefoltImg:require('./image/image1.png'),
         notfoundImg:require('./image/notFound.png'),
-        vector:require('./image/Vector.png')
+        vector:require('./image/Vector.png'),
+        anjomanComp:require('./image/anjomanComp.png'),
+        anjomanBargh:require('./image/anjomanBargh.png'),
+        questionPack:require('./image/question.jpeg'),
+        sameQuestion:require('./image/sameQuestioln.png')
     },
     svg:{
         tashrihiBoard:require('./svg/tashrihiboard.svg').default,
-        testiBoard:require('./svg/testiBoard.svg').default,
-        closeSvg:require('./svg/closeSvg.svg').default,
-        uploadFile:require('./svg/Group 8921.svg').default,
         navBarIcon1:require('./svg/t1 2.svg').default,
         navBarIcon2:require('./svg/t1 3.svg').default,
         homeSvg:require('./svg/Group 13906.svg').default,
@@ -57,6 +58,7 @@ const assets={
         landinginstalogo : require("./svg/Group 146.svg").default,
         landingtelephone : require("./svg/Group 13938.svg").default,
         examAnjoman : require("./svg/Exams-amico.svg").default,
+        wrong:require("./svg/Forgot password-cuate.svg").default
 
     }
 }

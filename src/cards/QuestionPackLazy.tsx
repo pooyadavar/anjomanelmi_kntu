@@ -7,10 +7,7 @@ import styled from 'styled-components';
 interface Props {
     header_image: string;
     subject: string;
-    lesson: string;
-    chapter: string;
-    grade: string;
-    status: string;
+
 
     
 }
@@ -49,15 +46,9 @@ const QuestionPackLazy: React.FC<Props> = (props) => {
 
             <Box sx={{ justifyContent: "space-around", alignItems: "center" }} px={1} >
                 <Box sx={{ display: "flex", backgroundColor: "gray.light", color: "gray.dark", borderRadius: "20px", alignItems: "center", px: "10px", py: "5px" , mb:"10px" ,justifyContent:"center" }}>
-                    <Typography sx={{ fontSize: "10px" }}>{props.grade}</Typography>
-                    <KeyboardArrowLeftIcon sx={{ fontSize: "12px" }} />
-                    <Typography sx={{ fontSize: "10px" }}>{props.chapter}</Typography>
-                    <KeyboardArrowLeftIcon sx={{ fontSize: "12px" }} />
-                    <Typography sx={{ fontSize: "10px" }}>{props.lesson}</Typography>
-                    <KeyboardArrowLeftIcon sx={{ fontSize: "12px" }} />
                     <Typography sx={{ fontWeight: "600", fontSize:"14px" }}>{props.subject}</Typography>
                 </Box>
-                <Typography sx={{ backgroundColor: "yellow.main", color: "gray.dark", borderRadius: "20px", fontSize: "10px", px: "10px", py: "5px" }}>۱۶۷ پرسش</Typography>
+                <Typography sx={{ backgroundColor: "yellow.main", color: "gray.dark", borderRadius: "20px", fontSize: "10px", px: "10px", py: "5px" }}>۱ سوال</Typography>
             </Box>
 
         </Box>

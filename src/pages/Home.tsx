@@ -3,20 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import assets from "../assets";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import LandingKhadamatCard from "../cards/LandingKhadamatCard";
 import styled from "styled-components";
-import Accordion, {
-  AccordionSlots,
-  accordionClasses,
-} from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails, {
-  accordionDetailsClasses,
-} from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Fade from "@mui/material/Fade";
-import { BarLoader } from "react-spinners";
-import Footer from "../components/footer/Footer";
 export default function Home() {
   const [activeItem, setActiveItem] = useState("school");
   const handleActiveItem = (item: any) => {
@@ -24,10 +11,6 @@ export default function Home() {
   };
 
   const [expanded, setExpanded] = React.useState(true);
-
-  const handleExpansion = () => {
-    setExpanded((prevExpanded) => !prevExpanded);
-  };
 
   const StyledGridItem = styled(Grid)({
     transition: "transform 0.3s ease",
@@ -38,151 +21,20 @@ export default function Home() {
 
   const leftColumnItems = [
     {
-      text: "امکان تحلیل و رصد وضعیت تحصیلی دانش‌آموزان",
+      text: "استفاده از مدل های زبانی برای حل سوالات ممنوع است.",
       icon: assets.svg.iconItem1,
     },
     {
-      text: "امکان ارتباط دانش‌آموز با مشاور و مراقب حین آزمون",
+      text: "تیم برنده بعد از محاسبه تمامی امتیاز ها(بخش کامپیوتری و برقی)مشخص میشود",
       icon: assets.svg.iconItem2,
     },
     {
-      text: "دسترسی به انبوهی از پرسش‌های درجه‌بندی‌شده برای ساخت آزمون",
+      text: "در صورت تقلب تیم از ادامه مسابقه منع میشود",
       icon: assets.svg.iconItem3,
     },
     {
-      text: "تنظیم جزئیات مختلف آزمون مانند شرکت‌کنندگان، محتوا و کارنامه",
+      text: "تیم ها میتوانند از چند لپ تاپ استفاده کنند اما استفاده از تلفن همراه ممنوع است و در صورت استفاده تیم از ادامه مسابقه منع میشود.",
       icon: assets.svg.iconItem4,
-    },
-    {
-      text: "امکان ساخت پرسش به‌صورت سفارشی",
-      icon: assets.svg.iconItem5,
-    },
-    {
-      text: "امکان اتصال آزمون با IP به سایت سایر مدارس",
-      icon: assets.svg.iconItem6,
-    },
-  ];
-
-  const rightColumnItems = [
-    {
-      text: "امنیت و حریم خصوصی قابل اعتماد",
-      icon: assets.svg.iconItem7,
-    },
-    { text: "سادگی ساخت آزمون آنلاین", icon: assets.svg.iconItem8 },
-    {
-      text: "ساخت سفارشی انواع کارنامۀ جمعی، تحلیلی و مقایسه‌ای",
-      icon: assets.svg.iconItem9,
-    },
-    {
-      text: "تصحیح و نمره‌دهی خودکار آزمون‌ها",
-      icon: assets.svg.iconItem10,
-    },
-    {
-      text: "امکان برگزاری همزمان آزمون آنلاین و چاپی",
-      icon: assets.svg.iconItem11,
-    },
-    {
-      text: "تعیین تعداد دفترچه و تنظیمات محتوا برای هر دفترچه به‌صورت مجزا",
-      icon: assets.svg.iconItem12,
-    },
-  ];
-
-  const cardData = [
-    {
-      title: "تحلیل و رصد وضعیت دانش‌آموز",
-      description:
-        "بررسی وضعیت تحصیلی دانش‌آموز با سنجش آزمون‌ها و نتایج در قالب گزارش و نمودار",
-      item1: "ابزارهای کنترل شاخص برای دریافت گزارش دقیق و جامع",
-      item2: "امکان تحلیل جزئیات هر آزمون و ارائۀ پیشنهاد",
-      item3: "نمایش نمودارهای مقایسه‌ای برای آزمون‌ها",
-      item4: "دریافت کارنامه‌های مقایسه‌ای",
-    },
-    {
-      title: "برگزاری آزمون هماهنگ کشوری",
-      description:
-        "برگزاری آزمون رسمی و آزمایشی به صورت حضوری و آنلاین از ابتدایی تا دوازدهم",
-      item1: "طراحی سؤالات توسط اساتید برتر کشور",
-      item2: "برگزاری آزمون با سربرگ خود مدرسه",
-      item3: "گزارش‌های متنوع در جامعۀ آماری",
-      item4: "آزمون جمع‌بندی مطالب درسی",
-    },
-    {
-      title: "آزمون‌ساز چاپی و آنلاین",
-      description: "برگزاری آزمون‌های آنلاین و چاپی با سیستم ضدتقلب",
-      item1: "تنوع در شیوۀ برگزاری آزمون",
-      item2: "امکان ارسال پیامک و ایمیل به شرکت‌کنندگان",
-      item3: "گزارش‌های جامع و تحلیلی از نتایج آزمون",
-      item4: "حذف امکان نشتی و تقلب در برگزاری آزمون",
-    },
-    {
-      title: "پرسش‌خانه (بانک سؤالات)",
-      description: "بیش از ۶۰۰هزار سؤال تستی با منابع استاندارد",
-      item1: "فیلترهای متنوع برای ساخت یک آزمون باکیفیت",
-      item2: "کسب درآمد برای مشاوران با طرح سؤالات متنوع",
-      item3: "استفاده از تجربیات دیگر استادان در بهره‌بردن از پرسش‌ها",
-      item4: "شخصی‌سازی دفترچۀ سؤالات",
-    },
-  ];
-
-  const stepsData = [
-    {
-      title: "ساخت آزمون",
-      icon: assets.svg.Landingtahlil,
-      details: [
-        "افزودن دانش‌آموزان آزمون",
-        "تعیین نوع آزمون (حضوری/آنلاین/ترکیبی)",
-        "تنظیم تعداد دفترچه و جزئیات",
-        "تنظیمات زمان و مدت آزمون",
-        "تنظیمات شکل نمایش آزمون",
-      ],
-      iconStyle: { bottom: "2rem", left: "6.5rem" },
-      position: "6rem",
-    },
-    {
-      title: "تحلیل دانش‌آموز",
-      icon: assets.svg.LandingKarname,
-      details: [
-        "نمایش نمودار وضعیت پیشرفت دانش‌آموز در آزمون‌ها در بازه‌های زمانی قابل‌تنظیم",
-      ],
-      iconStyle: { bottom: "2.3rem", left: "6.4rem" },
-      position: "8rem",
-    },
-    {
-      title: "دریافت کارنامه",
-      icon: assets.svg.Landingbargozari,
-      details: [
-        "امکان دریافت کارنامۀ جمعی",
-        "امکان دریافت کارنامۀ مقایسه‌ای با میانگین آزمون",
-        "دریافت نسخه چاپی از کارنامه",
-        "دریافت کارنامۀ جزئی از هر آزمون با نمایش وضعیت هر سؤال و پاسخ‌های درست و غلط",
-      ],
-      iconStyle: { bottom: "2.4rem", left: "6rem" },
-      position: "5rem",
-    },
-    {
-      title: "برگزاری آزمون",
-      icon: assets.svg.LandingSakht,
-      details: [
-        "امکان شرکت در آزمون با موبایل، تبلت و دسکتاپ",
-        "پشتیبانی آنلاین حین آزمون (امکان چت)",
-        "خرید دسته‌پرسش جدید",
-        "تنظیمات جلوگیری از تقلب",
-        "دریافت IP برای برگزاری آزمون در سایت‌های مختلف مدارس",
-      ],
-      iconStyle: { bottom: "2.1rem", left: "6.5rem" },
-      position: "1.5rem",
-    },
-    {
-      title: "شروع",
-      icon: assets.svg.LandingStart,
-      details: [
-        "ورود به تستامینوفن",
-        "افزودن سؤالات شخصی",
-        "خرید دسته‌پرسش جدید",
-        "سفارشی‌سازی پرسش‌های پرسش‌خانه",
-      ],
-      iconStyle: { bottom: "2rem", left: "6.6rem" },
-      position: "0rem",
     },
   ];
 
@@ -218,22 +70,9 @@ export default function Home() {
             >
               <Box
                 sx={{
-                  width: { md: "55%", sm: "100%", xs: "100%", lg: "45%" },
+                  width: { md: "55%", sm: "100%", xs: "100%", lg: "50%" },
                 }}
               >
-                <Box
-                  component="img"
-                  src={assets.svg.navBarIcon1}
-                  alt="navBarIcon1"
-                  sx={{
-                    display: {
-                      xs: "none",
-                      sm: "none",
-                      md: "block",
-                      lg: "block",
-                    },
-                  }}
-                />{" "}
                 <Box mb={1}>
                   <Typography
                     sx={{
@@ -243,7 +82,7 @@ export default function Home() {
                       color: "gray.dark",
                     }}
                   >
-                    برگزاری آزمون برات دردسره؟
+                    یک مسابقه هیجان انگیز !
                   </Typography>
                   <Typography
                     sx={{
@@ -260,9 +99,8 @@ export default function Home() {
                         color: "#BF8BD5",
                       }}
                     >
-                      تستامینوفن
+                      الکتروکد
                     </span>{" "}
-                    بگیر!
                   </Typography>
                 </Box>
                 <Typography
@@ -277,47 +115,52 @@ export default function Home() {
                     },
                   }}
                 >
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                  با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                  تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای
-                  کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
-                  آینده، شناخت فراوان جامعه و متخصصان را می طلبد
+                  <Typography
+                    sx={{
+                      ml: "1rem",
+                      color: "gray.dark",
+                      display: {
+                        xs: "none",
+                        sm: "none",
+                        lg: "block",
+                        md: "block",
+                      },
+                    }}
+                  >
+                    مسابقه الکتروکد در جهت مشارکت و افزایش همکاری میان دانشجویان
+                    مهندسی برق و مهندسی کامپیوتر شکل گرفته است و مدت زمان مسابقه
+                    از لحظه شروع ۳ ساعت می‌باشد. مسابقه متشکل از دو مرحله به شرح
+                    زیر است:
+                    <br />
+                    <br />
+                    <b>مرحله اول</b> شامل سوالی خارج از حیطه تخصصی رشته‌ها
+                    می‌باشد و در جهت یافتن رمز برای مرحله دوم است.
+                    <br />
+                    <Box mt={2} mb={1}>
+                      <b>مرحله دوم</b> شامل دو بخش سوالات تخصصی کامپیوتر و
+                      سوالات تخصصی مهندسی برق است.
+                    </Box>
+                    تیم ها در صورتی موفق به راه یابی به مرحله دوم میشوند که سوال
+                    بخش اول را حل کنند و رمز سوالات بخش تخصصی را پیدا کنند.
+                  </Typography>
                 </Typography>
                 <Box gap={3} mt={"1rem"}>
                   <Button
                     sx={{
-                      color: "pink.main",
-                      fontWeight: "600",
-                      fontSize: "15px",
-                      backgroundColor: "gray.light",
-                      borderRadius: "30px",
-                      px: { md: "8px", lg: "8px", sm: "25px", xs: "25px" },
-                      border: "3px solid #BF8BD5",
-                    }}
-                  >
-                    <img
-                      src={assets.img.vector}
-                      alt="vectorimg"
-                      style={{ paddingLeft: "5px", scale: "0.9" }}
-                    />
-                    معرفی تستامینوفن
-                  </Button>
-                  <Button
-                    sx={{
                       color: "pink.light",
-                      fontWeight: "600",
+                      fontWeight: "900",
                       fontSize: "15px",
                       background: "linear-gradient(to right, #390A4D, #9B70AA)",
                       borderRadius: "30px",
                       px: { md: "10px", lg: "10px", sm: "25px", xs: "25px" },
                       border: "3px solid #390A4D",
-                      mr: "0.7rem",
+                      mr: "0.5rem",
+                      mb: "2rem",
                     }}
                     component={Link}
-                    to={"/auth"}
+                    to={"/question"}
                   >
-                    رایگان امتحان کن
+                    بزن بریم
                     <ChevronLeftIcon sx={{ scale: "0.8" }} />
                   </Button>
                 </Box>
@@ -372,15 +215,16 @@ export default function Home() {
                   color: "#BF8BD5",
                 }}
               >
-                منعطف، ساده و امن
+                قوانین
               </span>{" "}
-              برگزارش کن!
+              مسابقه چیست؟
             </Typography>
 
             <Typography
               sx={{ color: "gray.main", fontSize: "14px", mt: "5px" }}
             >
-              با این فیچرها آزمون‌های‌تان را فقط آنلاین برگزار کنید.
+              با اجرای این قوانین، مسابقه‌ای منصفانه و هیجان‌انگیز برگزار خواهد
+              شد.
             </Typography>
           </Box>
 
@@ -403,6 +247,7 @@ export default function Home() {
                   sx={{
                     fontSize: "14px",
                     mt: "5px",
+                    mb: "1.2rem",
                   }}
                 >
                   <img
@@ -414,34 +259,9 @@ export default function Home() {
                 </Typography>
               ))}
             </Box>
-
-            {/* Right Column */}
-            <Box
-              sx={{ width: { md: "45%", lg: "45%", sm: "100%", xs: "100%" } }}
-            >
-              {rightColumnItems.map((item, index) => (
-                <Typography
-                  key={index}
-                  sx={{
-                    fontSize: "14px",
-                    mt: "5px",
-                  }}
-                >
-                  <img
-                    src={item.icon}
-                    alt={`iconItem${index + 7}`}
-                    style={{ marginLeft: "5px", marginBottom: "-7px" }}
-                  />
-                  {item.text}
-                </Typography>
-              ))}
-            </Box>
           </Box>
         </Box>
-
       </Box>
-
-
 
       <Box
         sx={{
@@ -449,11 +269,10 @@ export default function Home() {
           flexWrap: "wrap",
           width: "100%",
           margin: "0px auto",
-          mb:"3rem",
-          mt:"3rem"
+          mb: "3rem",
+          mt: "3rem",
         }}
       >
-
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Box
             sx={{
@@ -480,7 +299,7 @@ export default function Home() {
                     mb: "1rem",
                   }}
                 >
-                  مزیت‌های استفاده از {"  "}
+                  برگزار کنندگان{" "}
                   <span
                     style={{
                       fontSize: "36px",
@@ -488,21 +307,21 @@ export default function Home() {
                       color: "#BF8BD5",
                     }}
                   >
-                    تستامینوفن
+                    الکتروکد{" "}
                   </span>
                 </Typography>
                 <Typography>
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                  با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                  تکنولوژی مورد نیاز.
+                  از انجمن علمی مهندسی کامپیوتر و برق به‌عنوان میزبان مسابقه، و
+                  همچنین از مهندس بهنام نویدی و مهندس علی کدخدازاده به‌عنوان
+                  طراحان سوالات برق، و مهندس محمد عذیری، منتور بخش ACM دانشگاه و
+                  طراح سوالات کامپیوتر، صمیمانه قدردانی می‌کنیم.
                 </Typography>
               </Box>
               <Box
                 sx={{
                   flexWrap: "wrap",
                   display: "flex",
-                  justifyContent: "space-between",
+                  justifyContent: "space-around",
                   textAlign: "center",
                   gap: { md: "unset", lg: "unset", sm: "1rem", xs: "1rem" },
                 }}
@@ -512,30 +331,13 @@ export default function Home() {
                     width: { md: "34%", lg: "34%", sm: "100%", xs: "100%" },
                   }}
                 >
-                  <img src={assets.svg.landingperson1} alt="landingperson1" />
-                  <Box
-                    sx={{
-                      width: { md: "70%", lg: "70%", sm: "100%", xs: "100%" },
-                    }}
-                  >
-                    <Typography>
-                      <span
-                        style={{
-                          fontSize: "20px",
-                          fontWeight: "900",
-                          color: "#EE6A36",
-                        }}
-                      >
-                        ۲۵,۵۴۵,۰۹۰{" "}
-                      </span>
-                      نفرآزمون
-                    </Typography>
-                    <Typography sx={{ fontSize: "12px", color: "gray.dark" }}>
-                      به خاطر دسترسی راحت و باکیفیت به آزمون و سؤالات باکیفیت
-                    </Typography>
-                  </Box>
+                  <img
+                    src={assets.img.anjomanBargh}
+                    alt="landingperson1"
+                    style={{ width: "255px" }}
+                  />
                 </Box>
-                <Box
+                {/* <Box
                   sx={{
                     width: { md: "37%", lg: "37%", sm: "100%", xs: "100%" },
                   }}
@@ -578,47 +380,27 @@ export default function Home() {
                       به خاطر سادگی و کیفیت ساخت و برگزاری آزمون آنلاین{" "}
                     </Typography>
                   </Box>
-                </Box>
+                </Box> */}
                 <Box
                   sx={{
                     width: { md: "29%", lg: "29%", sm: "100%", xs: "100%" },
                   }}
                 >
-                  <img src={assets.svg.landingperson3} alt="landingperson3" />
+                  <img
+                    src={assets.img.anjomanComp}
+                    alt="landingperson3"
+                    style={{ width: "180px" }}
+                  />
                   <Box
                     sx={{
                       width: { md: "90%", lg: "90%", sm: "100%", xs: "100%" },
                     }}
                   >
                     <Box sx={{ display: "flex", justifyContent: "center" }}>
-                      <Typography>
-                        <span
-                          style={{
-                            fontSize: "20px",
-                            fontWeight: "900",
-                            color: "#EE6A36",
-                          }}
-                        >
-                          ۷۵,۵۶۳
-                        </span>
-                        دبیر
-                      </Typography>
-                      <Typography>
-                        <span
-                          style={{
-                            fontSize: "20px",
-                            fontWeight: "900",
-                            color: "#EE6A36",
-                          }}
-                        >
-                          {" "}
-                          ۲۸,۳۰۰{" "}
-                        </span>
-                        مشاور
-                      </Typography>
+                      <Typography>انجمن علمی مهندسی کامپیوتر</Typography>
                     </Box>
-                    <Typography sx={{ fontSize: "12px", color: "gray.dark" }}>
-                      به خاطر تحلیل و رصد وضعیت دانش‌آموزان
+                    <Typography sx={{ fontSize: "14px", color: "gray.dark" }}>
+                      دانشگاه خواجه نصیرالدین طوسی
                     </Typography>
                   </Box>
                 </Box>
